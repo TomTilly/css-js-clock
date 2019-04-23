@@ -1,3 +1,10 @@
+/*html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}*/
+
 body, html {
 	height: 100%;
 	margin: 0;
@@ -23,10 +30,14 @@ body {
 
 .hand {
 	top: 50%;
+	left: 50%;
 	position: absolute;
 	height: 5px;
-	width: 50%;
+	width: 45%;
 	background: #8E9090FF;
+	transform-origin: 0% 50%;
+	transform: rotate(-90deg);
+	/*transform: translateY(-2.5px);*/
 }
 
 .hour-hand {
@@ -34,5 +45,19 @@ body {
 }
 
 .second-hand {
-	height: 3px;
+	height: 2px;
+	/*transform: translateY(-1px);*/
+	background-color: #B2B5B8FF;
+}
+
+.center-dot {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 8px;
+	height: 8px;
+	transform: translate(-4px, -4px);
+	border-radius: 100%;
+	background-color: #8E9090FF;
+	z-index: 99;
 }
