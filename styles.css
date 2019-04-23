@@ -6,5 +6,33 @@ body, html {
 
 body {
 	background: url('beige-tiles.png');
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
+.clock {
+	height: 200px;
+	width: 200px;
+	border: 10px solid #FBDDC4;
+	border-radius: 100%;
+	background: #EEEFF2;
+	position: relative;
+	padding: 10px;
+}
+
+.hand {
+	top: 50%;
+	position: absolute;
+	height: 5px;
+	width: 50%;
+	background: #8E9090FF;
+}
+
+.hour-hand {
+	width: 30%;
+}
+
+.second-hand {
+	height: 3px;
+}
