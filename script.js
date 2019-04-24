@@ -4,13 +4,13 @@ const secondsHand = document.querySelector('.seconds-hand');
 
 function degreesToRotate(time){
 	if('hrs' in time){
-		return (time.hrs * 30) - 90;
+		return (time.hrs * 30) - 90; // hr hand moves 30 degrees on increment
 	}
 	if('min' in time){
-		return (time.min * 6) - 90;
+		return (time.min * 6) - 90; // min hand moves 6 degrees on increment
 	}
 	if('sec' in time){
-		return (time.sec * 6) - 90;
+		return (time.sec * 6) - 90; // seconds hand moves 6 degrees on increment
 	}
 }
 
@@ -32,6 +32,3 @@ function moveHands(){
 
 moveHands();
 setInterval(moveHands, 1000);
-
-// Hr hand moves 30 degrees every increment
-// Min and Sec hand moves 6 degrees every increment
