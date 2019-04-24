@@ -2,33 +2,22 @@ const hrHand = document.querySelector('.hr-hand');
 const minHand = document.querySelector('.min-hand');
 const secondsHand = document.querySelector('.seconds-hand');
 
-function degreesToRotate(time){
-	if('hrs' in time){
-		return (time.hrs * 30) - 90; // hr hand moves 30 degrees on increment
-	}
-	if('min' in time){
-		return (time.min * 6) - 90; // min hand moves 6 degrees on increment
-	}
-	if('sec' in time){
-		return (time.sec * 6) - 90; // seconds hand moves 6 degrees on increment
-	}
+function setTime() {
+    const now = new Date();
+
+    const seconds = now.getSeconds();
+	const secondsDegrees = ((seconds / 60) * 360) - 90;
+    secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+    const mins = now.getMinutes();
+    const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) - 90;
+    minHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+    const hour = now.getHours();
+    const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) - 90;
+    hrHand.style.transform = `rotate(${hourDegrees}deg)`;
 }
 
-function getCurrentTime(){
-	const currentDate = new Date();
-	return {
-		hrs: currentDate.getHours(),
-		min: currentDate.getMinutes(),
-		sec: currentDate.getSeconds(),
-	}
-}
+setInterval(setTime, 1000);
 
-function moveHands(){
-	const currentTime = getCurrentTime();
-	hrHand.style.transform = `rotate(${degreesToRotate({ hrs: currentTime.hrs })}deg)`;
-	minHand.style.transform = `rotate(${degreesToRotate({ min: currentTime.min })}deg)`;
-	secondsHand.style.transform = `rotate(${degreesToRotate({ sec: currentTime.sec })}deg)`;
-}
-
-moveHands();
-setInterval(moveHands, 1000);
+setTime();
